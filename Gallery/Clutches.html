@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html>
+<head>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  
+    
+                 <!-- Map -->
+  
+  
+  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=true"></script>
+<script>
+	var watchId = null;
+	function geoloc() {
+	if (navigator.geolocation) {
+		var optn = {
+				enableHighAccuracy : true,
+				timeout : Infinity,
+				maximumAge : 0
+		};
+	watchId = navigator.geolocation.watchPosition(showPosition, showError, optn);
+	} else {
+			alert('Geolocation is not supported in your browser');
+	}
+	}
+
+function showPosition(position) {
+		var googlePos = new google.maps.LatLng(24.927321,67.033066);
+		var mapOptions = {
+			zoom : 12,
+			center : googlePos,
+			mapTypeId : google.maps.MapTypeId.ROADMAP
+		};
+		var mapObj = document.getElementById('mapdiv');
+		var googleMap = new google.maps.Map(mapObj, mapOptions);
+		var markerOpt = {
+			map : googleMap,
+			position : googlePos,
+			title : 'Hi , I am here',
+			animation : google.maps.Animation.DROP
+		};
+		var googleMarker = new google.maps.Marker(markerOpt);
+		var geocoder = new google.maps.Geocoder();
+		geocoder.geocode({
+			'latLng' : googlePos
+			}, function(results, status) {
+				if (status == google.maps.GeocoderStatus.OK) {
+				if (results[1]) {
+					var popOpts = {
+						content : results[1].formatted_address,
+						position : googlePos
+					};
+				var popup = new google.maps.InfoWindow(popOpts);
+				google.maps.event.addListener(googleMarker, 'click', function() {
+				popup.open(googleMap);
+			});
+				} else {
+					alert('No results found');
+				}
+				} else {
+					alert('Geocoder failed due to: ' + status);
+				}
+			});
+			}
+
+			function stopWatch() {
+				if (watchId) {
+					navigator.geolocation.clearWatch(watchId);
+					watchId = null;
+
+				}
+			}
+
+		function showError(error) {
+		var err = document.getElementById('mapdiv');
+		switch(error.code) {
+		case error.PERMISSION_DENIED:
+		err.innerHTML = "User denied the request for Geolocation."
+		break;
+		case error.POSITION_UNAVAILABLE:
+		err.innerHTML = "Location information is unavailable."
+		break;
+		case error.TIMEOUT:
+		err.innerHTML = "The request to get user location timed out."
+		break;
+		case error.UNKNOWN_ERROR:
+		err.innerHTML = "An unknown error occurred."
+		break;
+		}
+		}
+		</script>
+            
+            
+             <!-- /Map -->
+
+
+<title>MSwardrobe</title>
+
+<link rel="stylesheet" type="text/css" href="Index.css"/>
+  <link rel="icon" href="../B.header/final.png" type="image/gif" sizes="16x16">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="jquery.easy_slides.css" rel="stylesheet" type="text/css" />
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="jquery.easy_slides.js"></script>
+</head>
+
+			<!-- html start -->
+
+<body style="background-image:url(../B.header/download.jpg); height:100%; width:100%;">
+    <div class="container" style="height:100%; background-color:white;">
+		<div class="row" style="display: flex;">
+			<div class="col-sm-8"><span style="text-align: left"></span><br />
+				<img src="../B.header/Final Logo (4).jpg" width="200" height="100" alt="logo" />
+			</div>
+
+
+
+<div style="float:right;" class="col-sm-4" >
+
+<!-- Add font awesome icons -->
+        <ul  style="margin-top:30px; margin-left:50px;" class="social-media">
+            <li>
+              <a href="https://www.facebook.com/mswardrobe2020">
+                <i class="fa fa-facebook" aria-hidden="true"></i>
+              </a>
+          </li>
+            <li>
+              <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.instagram.com/mswardrobe2020/">
+                <i class="fa fa-instagram" aria-hidden="true"></i>
+              </a>
+            </li>
+            <li>
+              <a href="#">
+                <i class="fa fa-google-plus" aria-hidden="true"></i>
+              </a>
+            </li>
+        </ul>
+		<!-- end of icon -->
+
+
+<span style="margin-left:145px;">
+<i class="glyphicon glyphicon-user"></i>&nbsp;<a id="my-account" href="../My account/My account.html">My Account</a></span></div>
+
+</div>
+<br />
+     <!--Navigation-->
+<!------ Include the above in your HEAD tag ---------->
+
+
+		
+		 <!-- end nav bar --> 
+<nav  class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#topFixedNavbar1"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span></button>
+       </div>
+      <!-- Collect the nav links, forms, and other content for toggling -->
+      <div class="collapse navbar-collapse" id="topFixedNavbar1">
+        <ul class="nav navbar-nav links">
+          <li><a href="../index.html">Home<span class="sr-only">(current)</span></a></li>
+          
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Men</a>
+      <ul class="dropdown-menu">
+      <li><a href="../Men/Backpacks.html">Backpacks</a></li>
+      <li><a href="../Men/Wallets.html">Wallets</a></li>
+      </ul> </li>
+          
+      <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Woman</a>
+      <ul class="dropdown-menu">
+      <li><a href="../Women/Backpack.html">Backpacks</a></li>
+      <li><a href="../Women/Handbags.html">Hand Bags</a></li>
+      <li><a href="../Women/Sling.html">Slings Bags</a></li>
+      <li><a href="../Women/Clutches.html">Clutches</a></li>
+      
+      
+      
+      </ul> </li>
+          
+      <li><a href="../About us.html">About Us</a>
+ </li>
+      
+      
+      <li><a href="../Contact Us.html">Contact Us</a>
+ </li>
+ 
+      <li class="active" class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">LookBook</a>
+      <ul class="dropdown-menu">
+      <li><a href="../Gallery/Men's Backpacks.html">Men's Backpacks</a></li>
+      <li><a href="../Gallery/Men's Wallets.html">Men's Wallet</a></li>
+      <li><a href="../Gallery/Women's Backpacks.html">Women's Backpacks</a></li>
+      <li class="active"><a href="../Gallery/Clutches.html">Clutches</a></li>
+      <li><a href="../Gallery/Sling bags.html">Sling Bags</a></li>
+      <li><a href="../Gallery/Hand bags.html">Hand Bags</a></li>
+      
+      </ul> </li>
+
+
+        </ul>
+
+      </div>
+      <!-- /.navbar-collapse -->
+    </div>
+    <!-- /.container-fluid -->
+  </nav>
+ <!-- end nav bar --> 
+		
+		
+		
+
+<!--Navigation-->
+
+
+<!-- gallery -->
+ <div class="slider slider_circle_10">
+  <div><img src="Images/Women's/Clutches/1-8.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/49bf892f156f61534a3f30d0ffbafc2d.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/download (1).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/download (2).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/download.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/ee.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/ff.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/handamde-sequin-beading-beautiful-champagne-bridesmaid-evening-party-women-clutches-with-chain-cheap-on-sale-more-colors-available_650x650px.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/handbag-Louis-Vuitton-4.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/il_fullxfull-832101331.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (1).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (2).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (3).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (4).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (5).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (6).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (7).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (8).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (9).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (10).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (11).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (12).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (13).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (14).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (15).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (16).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (17).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (18).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images (19).jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/images.jpg" width="400" height="310" /></div>
+  <div><img src="Images/Women's/Clutches/kk.jpg" width="400" height="310" /></div>
+
+
+
+
+  <div class="next_button"></div>  
+  <div class="prev_button"></div>  
+ </div>
+ 
+ <script>
+   $(document).ready(function() {
+     $('.slider_one_big_picture').EasySlides({'autoplay': true,'stepbystep':false, 'show': 5})
+     $('.slider_circle_10').EasySlides({'autoplay': true, 'show': 13})
+     $('.slider_four_in_line').EasySlides({'autoplay': true, 'show': 9})
+     $('.slider_clock').EasySlides({'autoplay': true, 'show': 15})
+
+   });
+ </script>
+ <!-- /gallery -->
+ 
+ 
+</div><br />
+ <!-- end of container -->
+
+
+
+
+
+
+
+
+<!-- Footer -->
+	<section id="footer">
+		<div class="container">
+			<div class="row text-center text-xs-center text-sm-left text-md-left">
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>COMPANY</h5>
+					<ul class="list-unstyled quick-links">
+						<li><i class="fa fa-angle-double-right"></i><img src="../B.header/Final Logo (4).jpg" width="200px" height="50px" /></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>About Us</a></li>
+						<li><a href="Contact Us.html"<a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Contact Us</a></a></li>
+					</ul>
+				</div>
+				<div class="col-xs-12 col-sm-4 col-md-4">
+					<h5>Quick links</h5>
+					<ul class="list-unstyled quick-links">
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Home</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>LookBook</a></li>
+						<li><a href="javascript:void();"><i class="fa fa-angle-double-right"></i>Store Location</a></li>
+					</ul>
+				</div>
+			  <div class="col-xs-12 col-sm-4 col-md-4">
+				<h4 style="color:white">Location</h4>
+				  <ul class="list-unstyled quick-links">
+                <a href="../Map.html"><img src="../Images/map.png" width="325" height="200" /></a>
+                  </ul>
+				</div>
+			</div>
+            
+
+		  <div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-5">
+					<ul class="list-unstyled list-inline social text-center">
+						<li class="list-inline-item"><a href="https://www.facebook.com/mswardrobe2020"><i class="fa fa-facebook"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-twitter"></i></a></li>
+						<li class="list-inline-item"><a href="https://www.instagram.com/mswardrobe2020"><i class="fa fa-instagram"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();"><i class="fa fa-google-plus"></i></a></li>
+						<li class="list-inline-item"><a href="javascript:void();" target="_blank"><i class="fa fa-envelope"></i></a></li>
+					</ul>
+				</div>
+				</hr>
+			</div>	
+			<div class="row">
+				<div class="col-xs-12 col-sm-12 col-md-12 mt-2 mt-sm-2 text-center text-white">
+					<p class="h6" style="color:#FFF;">Copyright © MSwardrobe - All rights reserved <br />
+
+				</div>
+				</hr>
+			</div>	
+		</div>
+	</section>
+	<!-- ./Footer -->
+</body>
+</html>
